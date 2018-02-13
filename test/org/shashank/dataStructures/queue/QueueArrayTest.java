@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @author shash
  *
  */
-class QueueTest {
+class QueueArrayTest {
 
 	/**
 	 * Test method for {@link org.shashank.dataStructures.queue.Queue#isFull()}.

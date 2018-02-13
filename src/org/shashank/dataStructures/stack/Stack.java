@@ -1,100 +1,44 @@
-package org.shashank.dataStructures.stack;
-
-import java.lang.reflect.Array;
-
 /**
  * 
+ */
+package org.shashank.dataStructures.stack;
+
+/**
  * @author shash
  *
- * @param <T>
  */
-public class Stack<T> {
-
-	private int top = -1;
-	private T[] a;
-	final Class<T> type;
+public interface Stack<T> {
 
 	/**
 	 * 
-	 * @param type
-	 * @param size
+	 * @return
+	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
-	public Stack(Class<T> type, int size) {
-		this.type = type;
-		a = (T[]) Array.newInstance(type, size);
-	}
-
+	public T pop() throws Exception;
+	
 	/**
 	 * 
 	 * @param t
 	 * @throws Exception
-	 *             Stack OverFlow
 	 */
-	public void push(T t) throws Exception {
-		if (isFull()) {
-			throw new Exception("Stack OverFlow!");
-		} else {
-			top++;
-			a[top] = t;
-		}
-	}
-
+	public void push(T t) throws Exception;
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int size();
+	
 	/**
 	 * 
 	 * @return
 	 * @throws Exception
-	 *             Stack Empty
 	 */
-	public T pop() throws Exception {
-		if (isEmpty()) {
-			throw new Exception("Stack Empty");
-		} else {
-			return a[top--];
-		}
-	}
-
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 *             Stack Empty
-	 */
-	public T peek() throws Exception {
-		if (isEmpty()) {
-			throw new Exception("Stack Empty");
-		} else {
-			return a[top];
-		}
-	}
-
+	public T peek() throws Exception;
+	
 	/**
 	 * 
 	 * @return
 	 */
-	public boolean isEmpty() {
-		if (top < 0) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean isFull() {
-		if (top >= a.length - 1) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public int size() {
-		return top;
-	}
+	public boolean isEmpty();
 }

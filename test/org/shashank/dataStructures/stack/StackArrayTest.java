@@ -11,11 +11,11 @@ import org.junit.jupiter.api.Test;
  * @author shash
  *
  */
-class StackTest {
+class StackArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.shashank.dataStructures.stack.Stack#push(java.lang.Object)}.
+	 * {@link org.shashank.dataStructures.stack.StackArray#push(java.lang.Object)}.
 	 */
 	@Test
 	final void testPush() {
@@ -23,7 +23,7 @@ class StackTest {
 	}
 
 	/**
-	 * Test method for {@link org.shashank.dataStructures.stack.Stack#pop()}.
+	 * Test method for {@link org.shashank.dataStructures.stack.StackArray#pop()}.
 	 */
 	@Test
 	final void testPop() {
@@ -31,7 +31,7 @@ class StackTest {
 	}
 
 	/**
-	 * Test method for {@link org.shashank.dataStructures.stack.Stack#peek()}.
+	 * Test method for {@link org.shashank.dataStructures.stack.StackArray#peek()}.
 	 */
 	@Test
 	final void testPeek() {
@@ -39,7 +39,7 @@ class StackTest {
 	}
 
 	/**
-	 * Test method for {@link org.shashank.dataStructures.stack.Stack#isEmpty()}.
+	 * Test method for {@link org.shashank.dataStructures.stack.StackArray#isEmpty()}.
 	 */
 	@Test
 	final void testIsEmpty() {
@@ -47,7 +47,7 @@ class StackTest {
 	}
 
 	/**
-	 * Test method for {@link org.shashank.dataStructures.stack.Stack#isFull()}.
+	 * Test method for {@link org.shashank.dataStructures.stack.StackArray#isFull()}.
 	 */
 	@Test
 	final void testIsFull() {
@@ -55,7 +55,7 @@ class StackTest {
 	}
 
 	/**
-	 * Test method for {@link org.shashank.dataStructures.stack.Stack#size()}.
+	 * Test method for {@link org.shashank.dataStructures.stack.StackArray#size()}.
 	 */
 	@Test
 	final void testSize() {

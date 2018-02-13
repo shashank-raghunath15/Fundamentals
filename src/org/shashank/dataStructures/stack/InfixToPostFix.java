@@ -13,7 +13,7 @@ public class InfixToPostFix implements ExpressionConvertor {
 	 */
 	@Override
 	public String convert(String s) throws Exception {
-		Stack<Character> stack = new Stack<Character>(Character.class, s.length());
+		StackArray<Character> stack = new StackArray<Character>(Character.class, s.length());
 
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < s.length(); i++) {

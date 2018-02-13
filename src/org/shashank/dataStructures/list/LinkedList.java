@@ -3,8 +3,6 @@ package org.shashank.dataStructures.list;
 import java.util.Collections;
 import java.util.Iterator;
 
-import org.shashank.dataStructures.Node;
-
 /**
  * 
  * @author shash
@@ -196,3 +194,38 @@ public class LinkedList<T> implements Iterable<T> {
 		}
 	}
 }
+
+/**
+ * Class containing a data element and a single link to another Node
+ * @author shash
+ *
+ * @param <T>
+ */
+class Node<T> {
+
+	private T data;
+	private Node<T> next;
+
+	public T getData() {
+		return data;
+	}
+
+	public void setData(T data) {
+		this.data = data;
+	}
+
+	public Node<T> getNext() {
+		return next;
+	}
+
+	public void setNext(Node<T> next) {
+		this.next = next;
+	}
+
+	public Node(T data) {
+		super();
+		this.data = data;
+	}
+
+}
+
