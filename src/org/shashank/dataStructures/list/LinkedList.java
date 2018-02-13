@@ -90,7 +90,8 @@ public class LinkedList<T> implements Iterable<T> {
 	 * 
 	 * @param index
 	 * @return
-	 * @throws Exception Index not found
+	 * @throws Exception
+	 *             Index not found
 	 */
 	public T get(int index) throws Exception {
 		Node<T> temp = getStart();
@@ -172,11 +173,11 @@ public class LinkedList<T> implements Iterable<T> {
 		} else {
 			return new Iterator<T>() {
 
-				private Node<T> currentNode;
+				private Node<T> currentNode = getStart();
 
 				@Override
 				public boolean hasNext() {
-					return !currentNode.equals(getEnd());
+					return !(currentNode == null);
 				}
 
 				@Override
@@ -185,18 +186,57 @@ public class LinkedList<T> implements Iterable<T> {
 						currentNode = getStart();
 						return currentNode.getData();
 					} else {
+						T data = currentNode.getData();
 						currentNode = currentNode.getNext();
-						return currentNode.getData();
+						return data;
 					}
 				}
 
 			};
 		}
 	}
+
+	public void print() {
+		Node<T> temp = getStart();
+
+		while (temp != null) {
+			System.out.println(temp.getData());
+			temp = temp.getNext();
+		}
+	}
+
+	public void printReverse() {
+		printReverse(getStart());
+	}
+
+	private void printReverse(Node<T> start) {
+		if (start == null) {
+			return;
+		}
+		printReverse(start.getNext());
+		System.out.println(start.getData());
+	}
+
+	public void reverse() {
+		reverse(getStart());
+	}
+
+	private void reverse(Node<T> start) {
+		if (start.getNext() == null) {
+			setStart(start);
+			return;
+		}
+		reverse(start.getNext());
+		setEnd(start);
+		Node<T> temp = start.getNext();
+		temp.setNext(start);
+		start.setNext(null);
+	}
 }
 
 /**
  * Class containing a data element and a single link to another Node
+ * 
  * @author shash
  *
  * @param <T>
@@ -222,10 +262,14 @@ class Node<T> {
 		this.next = next;
 	}
 
+	public Node() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Node(T data) {
 		super();
 		this.data = data;
 	}
 
 }
-
