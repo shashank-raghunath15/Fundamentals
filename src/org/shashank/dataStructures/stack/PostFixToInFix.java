@@ -1,17 +1,22 @@
 package org.shashank.dataStructures.stack;
 
-import java.util.Scanner;
+/**
+ * 
+ * @author shash
+ *
+ */
+public class PostFixToInFix implements ExpressionConvertor {
 
-public class PostFixToInFix {
+	/**
+	 * @throws Exception 
+	 * 
+	 */
+	@Override
+	public String convert(String s) throws Exception {
+		Stack<String> stack = new Stack<String>(String.class, s.length());
 
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		String input = in.nextLine();
-
-		Stack<String> stack = new Stack<String>(String.class, input.length());
-
-		for (int i = 0; i < input.length(); i++) {
-			Character c = input.charAt(i);
+		for (int i = 0; i < s.length(); i++) {
+			Character c = s.charAt(i);
 			if (c == '*' || c == '/' || c == '+' || c == '-') {
 				String s2 = stack.pop();
 				String s1 = stack.pop();
@@ -20,8 +25,7 @@ public class PostFixToInFix {
 				stack.push(String.valueOf(c));
 			}
 		}
-		System.out.println(stack.pop());
-		in.close();
+		return stack.pop();
 	}
 
 }

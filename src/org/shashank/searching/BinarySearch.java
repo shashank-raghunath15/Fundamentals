@@ -1,56 +1,61 @@
 package org.shashank.searching;
 
-import java.util.Scanner;
+/**
+ * Class that implements BinarySearch Algorithm
+ * 
+ * @author shash
+ * 
+ * @param <T>
+ *            Any type implementing comparable
+ */
 
-public class BinarySearch {
+public class BinarySearch<T extends Comparable<T>> implements Search<T> {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner in = new Scanner(System.in);
-
-		int a[] = new int[1000000];
-		for(int i=0;i<a.length;i++) {
-			a[i] = i;
-		}
-		
-		System.out.println("Enter element to be searched");
-		int x = in.nextInt();
-		long t1 = System.nanoTime();
-		System.out.println(binarySearch(a, x));
-		System.out.println("Time taken: " +(System.nanoTime()-t1));
-		in.close();
-	}
-	
-	public static String binarySearch(int a[], int x) {
+	/**
+	 * Searches the input array for the input element using BinarySearch Input array
+	 * must be sorted for this algorithm to work
+	 */
+	public int search(T a[], T x) {
 		int start = 0;
-		int end = a.length-1;
-		int mid = a.length/2;
-		return binarySearch(a,x,start,mid,end);
+		int end = a.length - 1;
+		int mid = a.length / 2;
+		return binarySearch(a, x, start, mid, end);
 	}
 
-	private static String binarySearch(int[] a, int x, int start, int mid, int end) {
-		// TODO Auto-generated method stub
-		if(start>=end) {
-			return "Not Found";
+	/**
+	 * Recursively halves the search range by comparing the value
+	 * 
+	 * @param a
+	 *            input array
+	 * @param x
+	 *            element to be searched
+	 * @param start
+	 *            start index
+	 * @param mid
+	 *            mid index
+	 * @param end
+	 *            end index
+	 * @return index if element is found. -1 otherwise.
+	 */
+	private int binarySearch(T[] a, T x, int start, int mid, int end) {
+
+		if (start >= end) {
+			return -1;
 		}
-		
-		if(a[mid] == x) {
-			return "Found at " +(mid +1);
+
+		if (a[mid] == x) {
+			return (mid + 1);
 		}
-		
-		if(x>mid) {
-			start = mid +1;
-			mid = (start+end)/2;
-			return binarySearch(a,x,start,mid,end);
-		}
-		
-		if(x<mid) {
+
+		if (x.compareTo(a[mid]) > 1) {
+			start = mid + 1;
+			mid = (start + end) / 2;
+			return binarySearch(a, x, start, mid, end);
+		} else {
 			end = mid;
-			mid = (start+end)/2;
-			return binarySearch(a,x,start,mid,end);
+			mid = (start + end) / 2;
+			return binarySearch(a, x, start, mid, end);
 		}
-		return "Not Found";
 	}
 
 }
-

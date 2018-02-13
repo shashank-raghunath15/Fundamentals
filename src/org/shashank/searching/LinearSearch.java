@@ -1,30 +1,25 @@
 package org.shashank.searching;
 
-import java.util.Scanner;
+/**
+ * Class that implements LinearSearch Algorithm
+ * 
+ * @author shash
+ *
+ * @param <T>
+ *            Any type implementing comparable
+ */
+public class LinearSearch<T extends Comparable<T>> implements Search<T> {
 
-public class LinearSearch {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner in = new Scanner(System.in);
-
-		int a[] = new int[1000000];
-		for(int i=0;i<a.length;i++) {
-			a[i] = i;
-		}
-		
-		System.out.println("Enter element to be searched");
-		int x = in.nextInt();
-		String result = "Not found";
-		long t1 = System.nanoTime();
+	/**
+	 * Searches the input array for the input element using LinearSearch
+	 */
+	@Override
+	public int search(T[] a, T data) {
 		for (int i = 0; i < a.length; i++) {
-			if (a[i] == x) {
-				result = "Found at " + (i + 1);
+			if (a[i].equals(data)) {
+				return i;
 			}
 		}
-		System.out.println(result);
-		System.out.println("Time taken: " +(System.nanoTime()-t1));
-		in.close();
+		return -1;
 	}
-
 }

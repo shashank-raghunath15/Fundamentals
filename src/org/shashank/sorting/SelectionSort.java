@@ -1,24 +1,23 @@
 package org.shashank.sorting;
 
-public class SelectionSort {
+/**
+ * Class that implements Selection Sort Algorithm
+ * 
+ * @author shash
+ *
+ */
+public class SelectionSort implements Sorter {
 
-	public static void main(String[] args) {
-
-				int a[] = RandomArrayGenerator.getIntArray(10000);
-				long t1 = System.nanoTime();
-				int result[] = selectionSort(a);
-				System.out.println("Time taken: " + (System.nanoTime() - t1));
-				for (int i = 0; i < a.length; i++) {
-					System.out.println(result[i]);
-				}
-	}
-
-	private static int[] selectionSort(int[] a) {
+	/**
+	 * Sorts the input array using Selection Sort Algorithm
+	 */
+	@Override
+	public int[] sort(int[] a) {
 		int size = a.length;
-		for(int i=0;i<size-1;i++) {
+		for (int i = 0; i < size - 1; i++) {
 			int min = i;
-			for(int j=i+1;j<size;j++) {
-				if(a[min]>a[j]) {
+			for (int j = i + 1; j < size; j++) {
+				if (a[min] > a[j]) {
 					min = j;
 				}
 			}

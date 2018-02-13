@@ -1,19 +1,18 @@
 package org.shashank.sorting;
 
-public class MergeSort {
+/**
+ * Class that implements Sorting using MergeSort Algorithm
+ * 
+ * @author shash
+ *
+ */
+public class MergeSort implements Sorter {
 
-	public static void main(String[] args) {
-
-		int a[] = RandomArrayGenerator.getIntArray(10000);
-		long t1 = System.nanoTime();
-		int result[] = mergeSort(a);
-		System.out.println("Time taken: " + (System.nanoTime() - t1));
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(result[i]);
-		}
-	}
-
-	private static int[] mergeSort(int[] a) {
+	/**
+	 * Sorts the input array using MergeSort Algorithm
+	 */
+	@Override
+	public int[] sort(int[] a) {
 		int size = a.length;
 
 		if (size < 2) {
@@ -32,11 +31,22 @@ public class MergeSort {
 			y[i - mid] = a[i];
 		}
 
-		mergeSort(x);
-		mergeSort(y);
+		sort(x);
+		sort(y);
 		return merge(x, y, a);
 	}
 
+	/**
+	 * Merges the left and right array into the target array
+	 * 
+	 * @param x
+	 *            left array
+	 * @param y
+	 *            right array
+	 * @param a
+	 *            target array
+	 * @return merged array
+	 */
 	private static int[] merge(int[] x, int[] y, int[] a) {
 
 		int left = x.length;

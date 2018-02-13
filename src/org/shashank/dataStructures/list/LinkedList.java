@@ -1,28 +1,41 @@
 package org.shashank.dataStructures.list;
 
+import java.util.Collections;
+import java.util.Iterator;
+
 import org.shashank.dataStructures.Node;
 
-public class LinkedList<T> {
+/**
+ * 
+ * @author shash
+ *
+ * @param <T>
+ */
+public class LinkedList<T> implements Iterable<T> {
 
 	private Node<T> start;
 	private Node<T> end;
 
-	public Node<T> getStart() {
+	private Node<T> getStart() {
 		return start;
 	}
 
-	public void setStart(Node<T> start) {
+	private void setStart(Node<T> start) {
 		this.start = start;
 	}
 
-	public Node<T> getEnd() {
+	private Node<T> getEnd() {
 		return end;
 	}
 
-	public void setEnd(Node<T> end) {
+	private void setEnd(Node<T> end) {
 		this.end = end;
 	}
 
+	/**
+	 * 
+	 * @param data
+	 */
 	public void add(T data) {
 		Node<T> node = new Node<>(data);
 		if (getStart() == null) {
@@ -34,6 +47,10 @@ public class LinkedList<T> {
 		}
 	}
 
+	/**
+	 * 
+	 * @param data
+	 */
 	public void addStart(T data) {
 		Node<T> node = new Node<T>(data);
 
@@ -45,7 +62,39 @@ public class LinkedList<T> {
 		}
 	}
 
-	public T get(int index) {
+	/**
+	 * 
+	 * @param data
+	 * @param index
+	 */
+	public void insert(T data, int index) {
+		Node<T> node = new Node<>(data);
+		if (index == 0) {
+			addStart(data);
+		} else if (index == size() - 1) {
+			add(data);
+		} else {
+			Node<T> temp = getStart();
+			int count = 0;
+			while (temp != null) {
+				if (count == index) {
+					Node<T> tempNext = temp.getNext();
+					temp.setNext(node);
+					node.setNext(tempNext);
+				}
+				count++;
+				temp = temp.getNext();
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param index
+	 * @return
+	 * @throws Exception Index not found
+	 */
+	public T get(int index) throws Exception {
 		Node<T> temp = getStart();
 		int x = 0;
 		while (temp != null) {
@@ -55,9 +104,13 @@ public class LinkedList<T> {
 			temp = temp.getNext();
 			x++;
 		}
-		return null;
+		throw new Exception("Index not found");
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int size() {
 		Node<T> temp = getStart();
 		int count = 0;
@@ -68,6 +121,10 @@ public class LinkedList<T> {
 		return count;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isEmpty() {
 		if (size() == 0) {
 			return true;
@@ -75,6 +132,10 @@ public class LinkedList<T> {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public T removeEnd() {
 		Node<T> temp = getStart();
 		T data = null;
@@ -87,5 +148,51 @@ public class LinkedList<T> {
 			temp = temp.getNext();
 		}
 		return data;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public T removeStart() {
+		if (getStart() == null) {
+			return null;
+		}
+		Node<T> temp = getStart();
+		setStart(temp.getNext());
+		temp.setNext(null);
+		return temp.getData();
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public Iterator<T> iterator() {
+		if (isEmpty()) {
+			return Collections.<T>emptyList().iterator();
+		} else {
+			return new Iterator<T>() {
+
+				private Node<T> currentNode;
+
+				@Override
+				public boolean hasNext() {
+					return !currentNode.equals(getEnd());
+				}
+
+				@Override
+				public T next() {
+					if (currentNode == null) {
+						currentNode = getStart();
+						return currentNode.getData();
+					} else {
+						currentNode = currentNode.getNext();
+						return currentNode.getData();
+					}
+				}
+
+			};
+		}
 	}
 }

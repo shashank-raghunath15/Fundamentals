@@ -1,23 +1,33 @@
 package org.shashank.sorting;
 
-public class QuickSort {
+/**
+ * Class that implements QuickSort algorithm
+ * 
+ * @author shash
+ *
+ */
+public class QuickSort implements Sorter {
 
-	public static void main(String[] args) {
-
-		int a[] = RandomArrayGenerator.getIntArray(100000);
-		long t1 = System.nanoTime();
-		int result[] = quickSort(a);
-		System.out.println("Time taken: " + (System.nanoTime() - t1));
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(result[i]);
-		}
-	}
-
-	private static int[] quickSort(int[] a) {
+	/**
+	 * Sorts input array using QuickSort algorithm
+	 */
+	@Override
+	public int[] sort(int[] a) {
 		return sort(a, 0, a.length - 1);
 	}
 
-	private static int[] sort(int[] a, int i, int j) {
+	/**
+	 * Sorts the input array
+	 * 
+	 * @param a
+	 *            input array
+	 * @param i
+	 *            start index of array
+	 * @param j
+	 *            end index of array
+	 * @return sorted array
+	 */
+	private int[] sort(int[] a, int i, int j) {
 
 		if (i >= j) {
 			return null;
@@ -28,8 +38,19 @@ public class QuickSort {
 		return a;
 	}
 
-	private static int partition(int[] a, int i, int j) {
-		// Random random = new Random();
+	/**
+	 * Partitions the input array according to the pivot index
+	 * 
+	 * @param a
+	 *            input array
+	 * @param i
+	 *            start index of array
+	 * @param j
+	 *            end index of array
+	 * @return index of pivot element
+	 */
+	private int partition(int[] a, int i, int j) {
+
 		int pivot = a[j];
 		int index = i;
 		for (int x = i; x < j; x++) {
