@@ -75,12 +75,12 @@ public class LinkedList<T> implements Iterable<T> {
 			Node<T> temp = getStart();
 			int count = 0;
 			while (temp != null) {
-				if (count == index) {
+				count++;
+				if (count == index-1) {
 					Node<T> tempNext = temp.getNext();
 					temp.setNext(node);
 					node.setNext(tempNext);
 				}
-				count++;
 				temp = temp.getNext();
 			}
 		}
@@ -200,7 +200,7 @@ public class LinkedList<T> implements Iterable<T> {
 		Node<T> temp = getStart();
 
 		while (temp != null) {
-			System.out.println(temp.getData());
+			System.out.print(temp.getData() +" ");
 			temp = temp.getNext();
 		}
 	}
@@ -214,7 +214,7 @@ public class LinkedList<T> implements Iterable<T> {
 			return;
 		}
 		printReverse(start.getNext());
-		System.out.println(start.getData());
+		System.out.print(start.getData() +" ");
 	}
 
 	public void reverse() {
