@@ -1,4 +1,4 @@
-package org.shashank.searching;
+package org.shashank.algorithms.searching;
 
 /**
  * Class that implements LinearSearch Algorithm

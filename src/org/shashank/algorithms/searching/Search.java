@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.shashank.searching;
+package org.shashank.algorithms.searching;
 
 /**
  * @author shash Interface that searches for an element in an array

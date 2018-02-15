@@ -1,4 +1,4 @@
-package org.shashank.sorting;
+package org.shashank.algorithms.sorting;
 
 /**
  * Class that implements Sorting using MergeSort Algorithm

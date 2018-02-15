@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.shashank.sorting;
+package org.shashank.algorithms.sorting;
 
 /**
  * @author shash

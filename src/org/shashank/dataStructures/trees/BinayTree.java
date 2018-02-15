@@ -57,8 +57,27 @@ public class BinayTree implements Tree {
 	 */
 	@Override
 	public int remove(int data) {
-		// TODO Auto-generated method stub
-		return 0;
+		Node node = getNode(data);
+		if (node == null) {
+			return -1;
+		}
+		return -1;
+	}
+
+	private Node getNode(int data) {
+		Node temp = getRoot();
+
+		while (temp != null) {
+			if (temp.getData() == data) {
+				return temp;
+			}
+			if (data > temp.getData()) {
+				temp = temp.getRight();
+			} else {
+				temp = temp.getLeft();
+			}
+		}
+		return null;
 	}
 
 	/*
@@ -182,8 +201,15 @@ public class BinayTree implements Tree {
 	 */
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size(getRoot());
+	}
+
+	private int size(Node root) {
+		if (root == null) {
+			return 0;
+		}
+
+		return size(root.getLeft()) + 1 + size(root.getRight());
 	}
 
 	/*
@@ -193,8 +219,11 @@ public class BinayTree implements Tree {
 	 */
 	@Override
 	public int min() {
-		// TODO Auto-generated method stub
-		return 0;
+		Node temp = getRoot();
+		while (temp.getLeft() != null) {
+			temp = temp.getLeft();
+		}
+		return temp.getData();
 	}
 
 	/*
@@ -204,8 +233,11 @@ public class BinayTree implements Tree {
 	 */
 	@Override
 	public int max() {
-		// TODO Auto-generated method stub
-		return 0;
+		Node temp = getRoot();
+		while (temp.getRight() != null) {
+			temp = temp.getRight();
+		}
+		return temp.getData();
 	}
 
 	/*
@@ -215,8 +247,17 @@ public class BinayTree implements Tree {
 	 */
 	@Override
 	public void printMirror() {
-		// TODO Auto-generated method stub
+		printMirror(getRoot());
+	}
 
+	private void printMirror(Node root) {
+		if (root == null) {
+			return;
+		}
+
+		printMirror(root.getRight());
+		System.out.print(root.getData() + " ");
+		printMirror(root.getLeft());
 	}
 
 	@Override
